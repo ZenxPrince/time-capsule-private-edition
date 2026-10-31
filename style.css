@@ -394,3 +394,38 @@ body{background:#020202;color:#fff}
     display: none !important;
   }
 }
+/* FINAL MOBILE + ACCENT GLOW OVERRIDE 2026-11-01 */
+
+/* Hide only the 03 / TIME GATE index on narrow screens. */
+@media screen and (max-width: 650px) {
+  .bento-time .card-topline > span:first-child {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* Make the existing accent typography glow visibly without affecting body copy. */
+.hero h1 .gradient-text,
+.closing-section h2 .gradient-text {
+  filter:
+    drop-shadow(0 0 8px rgba(249, 115, 22, .45))
+    drop-shadow(0 0 22px rgba(220, 38, 38, .32));
+}
+
+h2 .muted-gradient {
+  filter:
+    drop-shadow(0 0 8px rgba(249, 115, 22, .28))
+    drop-shadow(0 0 20px rgba(220, 38, 38, .24));
+}
+
+.field-label-text {
+  text-shadow:
+    0 0 20px rgba(249, 115, 22, .34),
+    0 0 36px rgba(220, 38, 38, .26) !important;
+}
+
+.life-step.active > span {
+  text-shadow:
+    0 0 14px rgba(239, 68, 68, .42),
+    0 0 28px rgba(220, 38, 38, .30);
+}
