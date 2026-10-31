@@ -389,8 +389,8 @@ body{background:#020202;color:#fff}
 .closing-orb{background:radial-gradient(ellipse,rgba(220,38,38,.075),transparent 70%)}
 
 /* Mobile-only: hide the Time Gate section index; leave desktop unchanged. */
-@media (max-width: 650px) {
+@media screen and (max-width: 650px) {
   .bento-time .card-topline > span:first-child {
-    display: none;
+    display: none !important;
   }
 }

@@ -2,6 +2,9 @@
 
 **Your present. Preserved for your future.**
 
+**Live website:** https://timecapsule.runs-at.dev/
+**Source code:** https://github.com/ZenxPrince/time-capsule-private-edition
+
 A browser-based time capsule for writing a message, encrypting it locally, and choosing when it becomes available. The application uses HTML, CSS, vanilla JavaScript, the Web Crypto API, and browser LocalStorage. It has no account system, backend, cloud sync, build step, or runtime dependency.
 
 ## Features
