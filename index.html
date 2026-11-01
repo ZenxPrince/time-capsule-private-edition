@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#020202"><meta name="description" content="Write a message. Encrypt it in your browser. Meet it in the future."><meta name="color-scheme" content="dark"><title>Time Capsule — Private Edition</title><link rel="stylesheet" href="style.css?v=20261101-mobile-timegate-fix"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#020202"><meta name="description" content="Write a message. Encrypt it in your browser. Meet it in the future."><meta name="color-scheme" content="dark"><title>Time Capsule — Private Edition</title><link rel="stylesheet" href="style.css?v=20261101-mobile-replacement-v1"></head>
 <body>
 <div class="ambient" aria-hidden="true"><canvas id="cosmosCanvas"></canvas><div class="ambient-glow ambient-glow-a"></div><div class="ambient-glow ambient-glow-b"></div><div class="grain"></div></div>
 <nav class="nav"><div class="nav-inner"><a class="brand" href="#home" aria-label="Time Capsule home"><span class="brand-mark">⌁</span><span class="brand-copy"><b>time capsule</b><small>PRIVATE EDITION</small></span></a><div class="nav-links"><a class="nav-link active" href="#home">Overview</a><a class="nav-link" href="#capsules">My capsules</a><a class="nav-link" href="#how-it-works">How it works</a><a class="nav-link" href="#security">Security</a></div><button class="btn btn-nav" id="navCreateBtn" type="button">Create capsule <span>↗</span></button><button class="nav-hamburger" id="navHamburger" type="button" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button></div></nav>
@@ -13,6 +13,55 @@
 <article class="bento-card bento-salt spotlight-card"><div class="card-topline"><span>01 / PER-CAPSULE</span><span class="card-icon">✳</span></div><div class="salt-visual"><div class="salt-ring"><span>16 B</span></div><div class="salt-ring salt-ring-small"><span>12 B</span></div><div class="salt-label salt-label-a">RANDOM SALT</div><div class="salt-label salt-label-b">RANDOM IV</div></div><h3>Fresh cryptographic material.</h3><p>Every capsule gets its own random 16-byte salt and 12-byte initialization vector.</p></article>
 <article class="bento-card bento-local spotlight-card"><div class="card-topline"><span>02 / STORAGE</span><span class="mini-tag">DEVICE ONLY</span></div><div class="storage-visual"><div class="storage-node"><span>⌂</span><small>YOUR BROWSER</small></div><div class="storage-flow"><i></i><i></i><i></i></div><div class="storage-lock">▣<small>ENCRYPTED</small></div></div><h3>No cloud in the middle.</h3><p>Capsules stay in the browser's LocalStorage. This build has no account system or backend sync.</p></article>
 <article class="bento-card bento-time spotlight-card"><div class="card-topline"><span class="time-gate-index">03 / TIME GATE</span><span class="mini-tag">USER-DEFINED</span></div><div class="time-visual"><div class="time-line"><i></i><i></i><i></i><b></b></div><div class="time-labels"><span>WRITE</span><span>WAIT</span><span>RETURN</span></div></div><h3>The date is part of the promise.</h3><p>The interface keeps a capsule locked until its chosen unlock time has arrived.</p></article>
+<article class="bento-card bento-mobile-replacement bento-key spotlight-card">
+    <div class="card-topline">
+        <span>02 / KEY DERIVATION</span>
+        <span class="mini-tag">PBKDF2 · SHA-256</span>
+    </div>
+    <div class="key-visual">
+        <div class="key-node">
+            <span class="key-symbol">•••</span>
+            <small>PASSWORD</small>
+        </div>
+        <div class="key-connector"><i></i><i></i><i></i></div>
+        <div class="key-engine">
+            <strong>210K</strong>
+            <small>ITERATIONS</small>
+        </div>
+        <div class="key-connector"><i></i><i></i><i></i></div>
+        <div class="key-node key-node-result">
+            <span class="key-symbol">◆</span>
+            <small>AES-256 KEY</small>
+        </div>
+    </div>
+    <h3>A key derived for each capsule.</h3>
+    <p>PBKDF2-SHA-256 derives an AES-256 key from your password and that capsule's random salt.</p>
+</article>
+
+<article class="bento-card bento-mobile-replacement bento-integrity spotlight-card">
+    <div class="card-topline">
+        <span>03 / INTEGRITY</span>
+        <span class="mini-tag">SHA-256 + AES-GCM</span>
+    </div>
+    <div class="integrity-visual">
+        <div class="integrity-data">
+            <span>▧</span>
+            <small>CIPHERTEXT</small>
+        </div>
+        <div class="integrity-connector"><i></i><i></i><i></i></div>
+        <div class="integrity-hash">
+            <strong>SHA</strong>
+            <small>256</small>
+        </div>
+        <div class="integrity-connector"><i></i><i></i><i></i></div>
+        <div class="integrity-result">
+            <span>✓</span>
+            <small>MATCH</small>
+        </div>
+    </div>
+    <h3>Integrity checked before opening.</h3>
+    <p>The stored SHA-256 fingerprint is checked against the ciphertext. AES-GCM also authenticates the data during decryption.</p>
+</article>
 </div></section>
 <section class="section-wrap lifecycle-section" id="how-it-works"><div class="section-kicker">03 / THE LIFECYCLE</div><div class="lifecycle-head"><h2 class="section-title">A simple sequence.<br><span class="muted-gradient">A meaningful return.</span></h2><p class="section-aside">The product is intentionally small. Its job is to preserve the message, not become another place to manage your life.</p></div><div class="lifecycle-panel spotlight-card"><div class="lifecycle-steps"><div class="life-step"><span>01</span><b>WRITE</b><small>Compose your message</small></div><div class="life-arrow">→</div><div class="life-step active"><span>02</span><b>ENCRYPT</b><small>Seal in this browser</small></div><div class="life-arrow">→</div><div class="life-step"><span>03</span><b>WAIT</b><small>Unlock time approaches</small></div><div class="life-arrow">→</div><div class="life-step"><span>04</span><b>OPEN</b><small>Decrypt with password</small></div></div><div class="lifecycle-foot"><span><i></i> CLIENT-SIDE FLOW</span><span>NO ACCOUNT · NO CLOUD SYNC</span></div></div></section>
 <section class="section-wrap dashboard-section" id="capsules"><div class="dashboard-head"><div><div class="section-kicker">04 / YOUR PRIVATE ARCHIVE</div><h2 class="section-title">My Capsules<span class="title-period">.</span></h2><p class="section-aside">Your encrypted timeline, stored in this browser.</p></div><div class="dashboard-meta"><div><strong id="totalCount">0</strong><span>TOTAL</span></div><div><strong id="lockedCount">0</strong><span>LOCKED</span></div></div></div><div class="capsule-grid" id="capsuleGrid" aria-live="polite"></div></section>

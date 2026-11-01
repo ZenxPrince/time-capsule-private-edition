@@ -475,13 +475,149 @@ body{background:#020202;color:#fff}
     }
 }
 
-/* MOBILE/TABLET: remove only the Time Gate index from its card */
+/* MOBILE/TABLET ONLY — replace Storage and Time Gate cards.
+   Original cards remain unchanged and visible on desktop. */
+.bento-mobile-replacement {
+    display: none;
+}
+
 @media screen and (max-width: 900px) {
-    .bento-time .card-topline .time-gate-index {
+    .bento-local,
+    .bento-time {
         display: none !important;
     }
 
-    .bento-time .card-topline {
-        justify-content: flex-end;
+    .bento-mobile-replacement {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bento-key,
+    .bento-integrity {
+        min-height: 250px;
+    }
+
+    .key-visual,
+    .integrity-visual {
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        margin: 8px 0 12px;
+    }
+
+    .key-node,
+    .key-engine,
+    .integrity-data,
+    .integrity-hash,
+    .integrity-result {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        text-align: center;
+    }
+
+    .key-node {
+        min-width: 65px;
+    }
+
+    .key-symbol {
+        width: 43px;
+        height: 43px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(249,115,22,.25);
+        border-radius: 13px;
+        background: rgba(249,115,22,.055);
+        color: #F97316;
+        font-size: 21px;
+    }
+
+    .key-node-result .key-symbol {
+        border-color: rgba(239,68,68,.3);
+        color: #EF4444;
+        background: rgba(220,38,38,.07);
+    }
+
+    .key-node small,
+    .key-engine small,
+    .integrity-data small,
+    .integrity-hash small,
+    .integrity-result small {
+        color: #858792;
+        font: 7px var(--mono);
+        letter-spacing: .08em;
+        white-space: nowrap;
+    }
+
+    .key-engine strong {
+        color: #F4F4F5;
+        font: 17px var(--mono);
+        letter-spacing: -.06em;
+    }
+
+    .key-connector,
+    .integrity-connector {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .key-connector i,
+    .integrity-connector i {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #F97316;
+        box-shadow: 0 0 8px rgba(249,115,22,.35);
+    }
+
+    .integrity-data span,
+    .integrity-hash,
+    .integrity-result span {
+        color: #F97316;
+    }
+
+    .integrity-data span {
+        width: 43px;
+        height: 43px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 12px;
+        background: rgba(255,255,255,.035);
+        font-size: 21px;
+    }
+
+    .integrity-hash {
+        width: 55px;
+        height: 55px;
+        border: 1px solid rgba(249,115,22,.24);
+        border-radius: 50%;
+        background: rgba(249,115,22,.045);
+    }
+
+    .integrity-hash strong {
+        font: 15px var(--mono);
+    }
+
+    .integrity-result span {
+        width: 43px;
+        height: 43px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(239,68,68,.3);
+        border-radius: 50%;
+        background: rgba(220,38,38,.07);
+        color: #EF4444;
+        font-size: 21px;
+    }
+
+    .bento-key h3,
+    .bento-integrity h3 {
+        margin-top: auto;
     }
 }
