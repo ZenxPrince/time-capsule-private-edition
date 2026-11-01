@@ -621,3 +621,40 @@ body{background:#020202;color:#fff}
         margin-top: auto;
     }
 }
+/* MOBILE INTEGRITY CARD WIDTH FIX — mobile/tablet only */
+@media screen and (max-width: 900px) {
+    .bento-mobile-replacement {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+    }
+
+    .bento-mobile-replacement .integrity-visual {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+
+/* BENTO TABLET WIDTH FIX V2 — stack replacement cards across mobile and tablet */
+@media screen and (max-width: 900px) {
+    .bento-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        align-items: stretch !important;
+    }
+
+    .bento-grid > .bento-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        flex: 0 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .bento-grid > .bento-mobile-replacement {
+        display: flex !important;
+    }
+}
