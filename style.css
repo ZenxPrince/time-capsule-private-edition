@@ -474,3 +474,14 @@ body{background:#020202;color:#fff}
         transition: none;
     }
 }
+
+/* MOBILE: remove only the Time Gate index from its card */
+@media screen and (max-width: 767px) {
+    .bento-time .card-topline .time-gate-index {
+        display: none !important;
+    }
+
+    .bento-time .card-topline {
+        justify-content: flex-end;
+    }
+}
