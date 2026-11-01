@@ -475,8 +475,8 @@ body{background:#020202;color:#fff}
     }
 }
 
-/* MOBILE: remove only the Time Gate index from its card */
-@media screen and (max-width: 767px) {
+/* MOBILE/TABLET: remove only the Time Gate index from its card */
+@media screen and (max-width: 900px) {
     .bento-time .card-topline .time-gate-index {
         display: none !important;
     }
